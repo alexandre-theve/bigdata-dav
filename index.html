@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>DataHug</title>
+
+		<meta name="description" content="Présentation de DataHug par Davidson SI Nord">
+		<meta name="content_author" content="Pierre Bausière">
+		<link rel="icon" type="image/png" href="img/theme/favicon.png" sizes="196x196" />
+
+		<!-- RevealJS Credits -->
+		<meta name="author" content="Hakim El Hattab">
+
+		
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+
+		<!--	Davidson Theme -->
+		<link rel="stylesheet" href="css/theme/davidson-light.css" id="theme">
+		<link rel="stylesheet" href="css/device.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section data-state='landing' data-background="img/landing.jpg">
+					<div class="right">
+						<h1 class="davidson blueGreen"><span>D</span>ata<span>H</span>ug</h1>
+						<h5 class="davidson blueGreen"><i>Le stack Big Data selon <span>D</span>avidson</i></h5>
+						<p class="landing blueGreen"><span>D</span>avidson <span>C</span>onsulting</p>
+
+					</div>
+				</section>
+
+				<section>
+					<h2 class="davidson">Sommaire</h4>
+					<ul>
+						<li><b>Overview</b></li>
+							<ul>
+								<li>Contexte de DataHug</li>
+								<li>La puissance de l'information</li>
+								<li>Notre solution : DataHug</li>
+							</ul>
+						<li><b>Spécifications techniques</b></li>
+						<ul>
+								<li>Leviers d'utilisation</li>
+								<!-- <ul>
+									<li>AWS Management Console</li>
+									<li>AWS CLI</li>
+									<li>SDKs</li>
+								</ul> -->
+							<li>Services utilisés<br>
+	 							<!-- <ul>
+									<li>Kinesis Streams</li>
+									<li>Simple Storage Service - S3</li>
+									<li>DynamoDB</li>
+									<li>Lambda</li>
+									<li>API Gateway</li>
+									<li>Elastic Cloud Computing - EC2</li>
+									<li>Elastic Map Reduce - EMR</li>
+									<li>Redshift</li>
+								</ul> -->
+							</li>
+							<li>Architecture complète</li>
+						</ul>
+						
+					</ul>
+
+				</section>
+
+				<!-- Contexte -->
+				<section>
+					<section data-background="img/information.jpg">
+							<blockquote>Contexte de DataHug</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson"> Contexte de DataHug </h2>
+						<ul>
+							<li>De plus en plus de données</li>
+							<li>Des données de types, formats et origines différents</li>
+							<li>De plus en plus compliqué de gérer cette donnée (stockage, analyse, temps réel)</li>
+							<li>Big Data peut être difficile et coûteux à appréhender</li>
+						</ul>
+
+					</section>
+				</section>
+
+				<!--  Puissance de l'information -->
+				<section>
+					<section data-background="img/Big-Data.jpg">
+							<blockquote>La puissance de l'information</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">La puissance de l'information</h2>
+						<ul>
+							<li>La donnée : <b>Votre richesse</b></li>
+							<li>L'analyse de cette donnée : un métier à part entière => <b>DataScientist</b></li>
+							<li>Le résultat de l'analyse : <b>Votre valeur ajoutée future</b></li>
+							<li>Fournir la puissance et les outils pour l'analyse : encore un autre métier => <b> Le nôtre</b></li>
+						</ul>
+					</section>
+				</section>
+
+
+				<!--  Modèle de données -->
+				<section>
+					<section data-background="img/overview.jpg">
+							<blockquote>DataHug Overview</blockquote>
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Overview</h2>
+						<img class="model" src="img/overview/1.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Overview</h2>
+						<img class="model" src="img/overview/2.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Overview</h2>
+						<img class="model" src="img/overview/3.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Overview</h2>
+						<img class="model" src="img/overview/4.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Overview</h2>
+						<img class="model" src="img/overview/5.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Overview</h2>
+						<img class="model" src="img/overview/6.png" />
+					</section>
+
+				</section>
+
+
+				<!--  Connecteur -->
+				<section>
+					<section data-background="img/server.jpg">
+							<blockquote>Overview Connecteur</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Connecteur</h2>
+						<ul>
+							<li>Interface entre vos données et nos outils d'analyse</li>
+							<li>Différents connecteurs déjà développés</li>
+							<ul>
+								<li><b>API Rest</b> (Envoi des données via HTTP/S)</li>
+								<li><b>Kinesis Streams</b> (Nécessite un ajout de code dans l'application cliente)</li>
+								<li>Utilisation de <b>Hubs IoT</b> comme <b><i>HiveMQ</i></b> ou <b><i>RunAbove TimeSeries</i></b></li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<!--  Analyse -->
+				<section>
+					<section data-background="img/amazon-aws.png">
+							<blockquote>Overview Analyse</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Analyse</h2>
+						<ul>
+							<li>Utilisation d'Amazon Web Services</li>
+							<li>Big Data grâce au framework Hadoop</li>
+							<li>Possibilité de faire de l'analyse en temps réel</li>
+							<li>Possibilité de générer des rapports</li>
+							<li>Infrastructure très scalable (en augmentation ou descente de charge)</li>
+							<li>APIs permettant l'exposition des données de manière sécurisée</li>
+						</ul>
+					</section>
+				</section>
+
+				<!--  BI -->
+				<section>
+					<section data-background="img/BI.jpg">
+							<blockquote>Overview Visualisation</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Visualisation</h2>
+						<p><ul>
+							<li>Nombreux types de repésentations</li>
+							<li>Simplicité de visualisation des informations</li>
+							<li>Adaptable à divers secteurs d'activité</li>
+							<li>Utilisation de bibliothèques JavaScript</li>
+						</ul></p>
+						<img width="150" alt="indicateur" src="img/indicateur.png" />
+						<img width="150" alt="indicateur" src="img/indicateur2.png" />
+						<img width="150" alt="indicateur" src="img/indicateur3.png" />
+					</section>
+					<section  data-transition="none" >
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img   src="img/screenNeo/Image1.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img src="img/screenNeo/Image2.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img  src="img/screenNeo/Image3_masked.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img  src="img/screenNeo/Image4_masked.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img src="img/screenNeo/Image5_masked.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img  src="img/screenNeo/Image6.png" />
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">POC Dashboard client</h2>
+						<img src="img/screenNeo/Image7_masked.png" />
+					</section>
+				</section>
+
+				<!-- Vos besoins ! -->
+<!-- 				<section>
+					<section data-background="img/besoin.jpg">
+							<blockquote>Comment DataHug peut vous aider</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Vos besoins</h2>
+						<ul>
+							<li>Recherche dans une base de CVs</li>
+							<li>Pondérer les CVs qui reviennent souvent</li>
+							<li>Interface permettant d'estimer </li>
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Maquette de Dashboard</h2>
+						<div style="float:left;margin-right:-50">
+							<p><ul>
+							<li><p>Statistiques globales</p></li>
+							<li><p>Statistiques personnelles</p></li>
+							<li><p>Recherches filtrées</p></li>
+							<li><p>Estimation en temps réel</p></li>
+							<li><p>Affichage des en-têtes de CV</p></li>
+						</ul></p></div>
+						<img style="float:right;margin:auto" alt="maquette dashboard RH" height="600" src="img/dashRH.png" />
+					</section>
+				</section>
+ -->
+
+				<section>
+					<section data-background="img/demarche.jpg">
+							<blockquote>Spécifications Techniques</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Spécifications Techniques</h4>
+						<ul>
+							<li><b>Rappel des besoins</b></li>
+							<li><b>Leviers d'utilisation</b></li>
+								<ul>
+									<li>AWS Management Console</li>
+									<li>AWS CLI</li>
+									<li>SDKs</li>
+								</ul>
+							<li><b>Services utilisés</b><br>
+	 							<ul>
+									<li>Kinesis Streams</li>
+									<li>Simple Storage Service - S3</li>
+									<li>DynamoDB</li>
+									<li>Lambda</li>
+									<li>API Gateway</li>
+									<li>Elastic Cloud Computing - EC2</li>
+									<li>Elastic Map Reduce - EMR</li>
+									<li>Redshift</li>
+								</ul>
+							</li>
+							<li><b>Architecture complète</b></li>
+							
+						</ul>
+
+					</section>
+				</section>
+
+				<!--  Rappel des besoins -->
+				<section>
+					<section data-background="img/besoins.jpg">
+							<blockquote>Rappel des besoins</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Rappel des besoins</h2>
+						<ul>
+							<li class="fragment">Absorber grosses quantités de données</li>
+							<li class="fragment">Temps Réel en entrée et sortie</li>
+							<li class="fragment">Haute disponibilité (consultable H24, 7J/7)</li>
+							<li class="fragment">Génération de rapports</li>
+							<li class="fragment">Présentation de métriques (Dashboard)</li>
+							<li class="fragment">Prix abordable (Pour attirer aussi les Startups et PME)</li>
+							<li class="fragment">Machine Learning / Business Intelligence à terme</li>
+						</ul>
+						
+						
+
+					</section>
+				</section>
+
+
+				<!--  Leviers d'utilisation -->
+				<section>
+					<section data-background="img/levers.jpg">
+							<blockquote>Moyens d'utilisation</blockquote>
+					</section>
+				</section>
+
+				<!--  AWS Management Console-->
+				<section>
+					<section data-background="img/aws_mc.png">
+							<blockquote>AWS Management Console</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">AWS Management Console</h2>
+						<ul>
+							<li class="fragment">User friendly</li>
+							<li class="fragment">De nombreux tutos utilisent cette interface</li>
+							<li class="fragment">Nombreux indicateurs</li>
+							<li class="fragment">Pas très pratique pour scripter</li>
+							<li class="fragment"><em>C'est pour les casus</em></li>
+						</ul>
+					</section>
+				</section>
+
+				<!--  CLI -->
+				<section>
+					<section data-background="img/aws_cli.png">
+							<blockquote>AWS CLI</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">AWS CLI</h2>
+						<ul class="fragment">
+							<li >Notation : </li>
+								<ul>
+									<li>
+										<code>
+											aws dynamodb scan --table-name Sensor
+										</code>
+									</li>
+								</ul>
+								<ul class="fragment">
+									<li>
+										<code>
+											aws SERVICE COMMANDE [--KEY VALUE]
+										</code>
+									</li>
+								</ul>
+							<li class="fragment">Possibilité de redéfinir les confs à la volée, et de changer le type d'output</li>
+							<li class="fragment">Nombreux services utilisables</li>
+							<li class="fragment">Rend le scripting plus simple que simuler des clicks sur une interface :)</li>
+							<li class="fragment">Basée sur le SDK Python</li>
+							<li class="fragment"><em>Seuls les vrais savent.</em></li>
+							
+							
+						</ul>
+					</section>
+				</section>
+
+				<!--  SDK-->
+				<section>
+					<section data-background="img/aws_sdk.png">
+							<blockquote>AWS SDKs</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">SDKs</h2>
+						<ul>
+							<li>Android</li>
+							<li>Browser - Javascript</wli>
+							<li><b>iOS</b></li>
+							<li><b>Java</b></li>
+							<li>.NET</li>
+							<li><b>Node.js</b></li>
+							<li>PHP</li>
+							<li><b>Python</b></li> 
+							<li>Ruby</li>
+							<li>Go</li>
+							<li><b>C++</b></li>
+						</ul>
+					</section>
+				</section>
+
+				<!--  Services -->
+				<section>
+					<section data-background="img/aws_logo.png">
+					</section>
+				</section>
+
+				<!--  Présentation Kinesis-->
+				<section>
+					<section data-background="img/aws-kinesis.png">
+					</section>
+					<section>
+						<h2 class="davidson">Kinesis Streams</h2>
+						<p><b>Utilité :</b> Streaming de données à une échelle massive pour un traitement temps réel. </p>
+						<p><b>Concept :</b> Sorte de pipeline dans laquelle de la donnée est envoyée, et devient accessible par les autres services AWS </p>
+						<p><b>Place dans l'archi :</b> Récupération des données et distribution de celle-ci aux autres services AWS, avec l'aide de Firehose ou Lambda.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Lexique Kinesis Streams</h2>
+						<ul>
+							<li class="fragment"><b>Stream:</b> séquence ordonnée de data records. Chaque enregistrement dans le stream possède un numéro de séquence.</li>
+							<li class="fragment"><b>Data record:</b> L'unité de donnée stockée dans Stream. Composé d'un numéro de séquence, d'une clé de partition et d'un data blob. Le blob peut aller jusqu'à 1Mb. Streams ne touche ni ne modifie le blob.</li>
+							<li class="fragment"><b>Période de rétention:</b> Durée durant laquelle la donnée sera accessible via Streams. Par défaut 24h, augmentable jusqu'à 7j, mais augmente aussi le prix.</li>
+							<li class="fragment"><b>Producers:</b> Applications qui ajoutent de la donnée dans Streams. </li>
+							<li class="fragment"><b>Consumers:</b> Applications qui récupèrent de la donnée de Streams et la traite. Aussi appelées Amazon Kinesis Streams Applications. Utilisent la KCL ou la Streams API.</li>
+							<li class="fragment"><b>Shards:</b> Un shard est un groupe de data records identifiable dans un stream. Un stream est composé d'un ou plusieurs shards, qui fournissent chacun une unité fixe de capacité. Chaque shard peut supporter jusque <em>5 transactions par seconde en lecture, jusqu'à 2Mb/s de donnée</em>, et <em>jusqu'à 1.000 enregistrements par seconde en écriture pour un max de 1Mb/s</em>. La capacité de donnée du stream est fonction du nombre de shards spécifiés pour le stream. </li>
+							<li class="fragment"><b>Firehose:</b> Une Amazon Kinesis Streams Application permettant de transférer la donnée très simplement de Streams vers S3, DynamoDB ou Redshift. Ne permet pas la transformation de cette donnée (Pas un ETL).</li>
+						</ul>
+
+					</section>
+					<section>
+						<h2 class="davidson">Opérations basiques</h2>
+						<p>
+							<pre>
+								<code>
+									#Création d'un stream
+									aws kinesis create-stream --stream-name data-stream --shard-count 1
+
+									#Ajout d'un enregistrement
+									aws kinesis put-record --stream-name data-stream --data "{\"Enregistrement\":\"Bonjour, ceci est mon un enregistrement\", \"salut\":[1,2]}"--partition-key 123
+
+									#Récupération d'un Shard Iterator
+									aws kinesis get-shard-iterator --shard-id $SHARD-ID --shard-iterator-type TRIM_HORIZON --stream-name data-stream
+
+									#Récupération de la donnée en base64 de ce shard iterator 
+									aws kinesis get-records --shard-iterator $SHARD-ITERATOR
+
+									#Suppression d'un stream
+									aws kinesis delete-stream --stream-name data-stream
+								</code>
+							</pre>
+						</p>
+					</section>
+
+					
+				</section>
+				
+				<!--  Présentation S3-->
+				<section>
+					<section data-background="img/s3.png">
+					</section>
+					<section>
+						<h2 class="davidson">S3</h2>
+						<p><b>Utilité :</b> Stockage de n'importe quelle quantité ou type de donnée. Récupérable n'importe quand et depuis n'importe où. </p>
+						<p><b>Concept :</b> Stockage d'objets dans des buckets. </p>
+						<p><b>Place dans l'archi :</b> Stockage brut de la donnée, des rapports, de meta-informations.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Lexique S3</h2>
+						<ul>
+							<li><b>Bucket:</b> Lieu de stockage de tout objet S3.</li>
+							<li><b>Object:</b> N'importe quel type de fichier + metadata.</li>
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Opérations basiques</h2>
+						<p>
+							<pre>
+								<code>
+									#copy, move, remove objects
+									cp, mv, rm
+
+									#synchro an S3 bucket with another S3bucket or local directory
+									sync
+
+									#make & remove buckets
+									mb, rb
+
+									#list objects or buckets
+									ls
+
+									#set a website configuration for a bucket
+									website
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+
+				<!--  Présentation DynamoDB-->
+				<section>
+					<section data-background="img/dynamodb.png">
+							<!-- <blockquote>Kinesis Stream</blockquote> -->
+					</section>
+					<section>
+						<h2 class="davidson">DynamoDB</h2>
+						<p><b>Utilité :</b> Stockage rapide et flexible de documents.</p>
+						<p><b>Concept :</b> Base de données NoSQL. Modèle de stockage en mode Clé-Valeurs. Son modèle de données est flexible et ses performances fiables.</p>
+						<p><b>Place dans l'archi :</b> Exposer la donnée transformée aux outils BI pour analyse rapide. À une plus petite échelle que Redshift.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Lexique DynamoDB</h2>
+						<ul>
+							<li><b>Table:</b> Collection d'items.</li>
+							<li><b>Item:</b> Collection d'attributs.</li>
+							<li><b>Attribut:</b> Paire Nom-Valeur.</li>
+							<li><b>Primary Key:</b> Identifiant unique à chaque item dans une table.</li>
+							<li><b>Secondary Index:</b> Permet de requêter la donnée selon un autre index.</li>
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Opérations basiques</h2>
+						<p>
+							Comme j'ai travaillé dessus avec Node.js, le code ci-dessous utilise son SDK.
+							<pre>
+								<code>
+									//Création d'une table
+									var AWS = require("aws-sdk");
+									var dynamodb = new AWS.DynamoDB();
+									var params= { 
+									    TableName: "Sensor",
+									    KeySchema: [
+									        {AttributeName:"SensorID", KeyType: "HASH"}
+									    ],
+									    AttributeDefinitions:[
+									        {AttributeName: "SensorID", AttributeType: "S"}
+									    ],
+									    ProvisionedThroughput: {
+									        ReadCapacityUnits:1,
+									        WriteCapacityUnits:1
+									    }
+									};
+									dynamodb.createTable(params, function(err, data){
+									    if(err){
+									        console.log(JSON.stringify(err, null, 2));
+									    }
+									    else{
+									        console.log(JSON.stringify(data, null , 2));
+									    }
+									});
+									
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+
+				<!--  Présentation Lambda-->
+				<section>
+					<section data-background="img/lambda.png">
+							<blockquote>Amazon Lambda</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Lambda</h2>
+						<p><b>Utilité :</b> Execution de code sans avoir à mettre en service ou gérer des serveurs.</p>
+						<p><b>Concept :</b> Paiement au temps de calcul consommé, sans frais lorsqu'aucun code n'est exécuté. Exécution de code pour n'importe quel type d'application ou service back-end. Il suffit de charger le code, et de choisir les triggers (Manuels, évenements AWS, ou appels depuis des applications Web ou mobile).</p>
+						<p><b>Place dans l'archi :</b> Transformation ou déplacement des données à plus petite échelle que le cluster EMR. Peut aussi sortir la donnée des streams Kinesis.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Lexique Lambda</h2>
+						<ul>
+							<li><b>Lambda Function:</b> Code exécuté.</li>
+							<li><b>Event source:</b> Service qui génère les événements qui déclenchent la fonction.</li>
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Opérations basiques</h2>
+						<p>ProcessKinesisRecord.js
+							<pre>
+								<code>
+									exports.handler = function(event, context){
+										console.log(JSON.stringify(event, null, ' '));
+										event.Records.forEach(function(record){
+											//Kinesis data is base64 encoded so decode here
+											var payload = new Buffer(record.kinesis.data, 'base64').toString('ascii');
+											console.log('Decoded payload :', payload);
+										});
+										context.done(null, "Stream data processed");
+									};
+								</code>
+							</pre>
+						</p>
+						<p>
+							<pre>
+								<code>
+									#Create function
+									aws lambda create-function --function-name ProcessKinesisRecords --zip-file fileb://d:/dev/AWS/lambda/ProcessKinesisRecords.zip --role arn:aws:iam::194248515650:role/lambda-kinesis-execution-role --handler ProcessKinesisRecords.handler --runtime nodejs --timeout 10
+
+									#Add Event source
+									aws lambda create-event-source-mapping --function-name ProcessKinesisRecords --event-source arn:aws:kinesis:eu-west-1:194248515650:stream/data-stream --batch-size 100 --starting-position TRIM_HORIZON
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+
+				<!--  Présentation API Gateway-->
+				<section>
+					<section data-background="img/aws_apigateway.png">
+							<blockquote>Amazon API Gateway</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">API Gateway</h2>
+						<p><b>Utilité :</b> Service permettant de créer, publier, gérer, surveiller et sécuriser facilement des API à n'importe quelle échelle.</p>
+						<p><b>Concept :</b> Permet de créer une API qui agit comme "porte d'entrée" pour des applications, afin d'accéder aux données, à la logique métier ou aux fonctionnalités des services Amazon, comme Lambda ou des tâches EC2. API Gateway gère les tâches liées à l'acceptation et le traitement de plusieurs centaines de milliers d'appels d'API simultanés.</p>
+						<p><b>Place dans l'archi :</b> Une autre façon de pousser de la donnée sur le cloud Amazon, ou de déclencher des évenements Lambda, directement via des requètes HTTP.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Lexique Api Gateway</h2>
+						<ul>
+							<li><b>API developer or API Owner:</b> Compte AWS qui possède le déploiement API Gateway.</li>
+							<li><b>App developer or client developer:</b> Créateur d'app qui a (ou non) un compte AWS et qui intéragit avec l'API déployée. Un App developer peut être représenté par une API Key</li>
+							<li><b>App user developer, end user or client endpoint:</b> Une entité qui utilise une application développée par l'App Developer qui interagit avec les APIs d'Amazon API Gateway. Un App user peut être représenté par un Amazon Cognito Identity ou un porteur de token.</li>
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Opérations basiques</h2>
+						<p>
+							<pre>
+								<code>
+									#Créer Rest API 
+									aws apigateway create-rest-api --name DynamoDBOperations
+
+									#Récupérer Root ressource
+									aws apigateway get-resources --rest-api-id 8p7d0py4t2
+
+									#response
+									{                             
+									    "items": [                
+									        {                     
+									            "path": "/",      
+									            "id": "13agzy7geh"
+									        }                     
+									    ]                         
+									}    
+
+									#créer une ressource 
+									aws apigateway create-resource --rest-api-id 8p7d0py4t2 --parent-id 13agzy7geh --path-part DynamoDBManager
+
+									#Créer méthode POST sur la ressource
+									aws apigateway put-method --rest-api-id 8p7d0py4t2 --resource-id d6d6te --http-method POST --authorization-type NONE
+
+									#Lier lambda & Api method POST
+									aws apigateway put-integration --rest-api-id 8p7d0py4t2 --resource-id d6d6te --http-method POST --type AWS --integration-http-method POST --uri arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:194248515650:function:LambdaFunctionOverHttps/invocations
+
+									#Préparer la réponse du lambda via l'API
+									aws apigateway put-method-response --rest-api-id 8p7d0py4t2 --resource-id d6d6te --http-method POST --status-code 200 --response-models "{"\"application/json\":\"Empty\"}"
+
+									#Déployer l'API
+
+									aws apigateway create-deployment --rest-api-id 8p7d0py4t2 --stage-name prod
+
+									#Gérer les permissions
+									aws lambda add-permission --function-name LambdaFunctionOverHttps --statement-id apigateway-prod-2 --action lambda:InvokeFunction --principal apigateway.amazonaws.com --source-arn "arn:aws:execute-api:eu-west-1:194248515650:8p7d0py4t2/prod/POST/DynamoDBManager"
+
+
+									#Créer un nouvel utilisateur
+									 aws apigateway test-invoke-method 
+									 --rest-api-id 8p7d0py4t2 
+									 --resource-id d6d6te 
+									 --http-method POST 
+									 --path-with-query-string "" 
+									 --body "{\"operation\":\"create\",\"tableName\":\"User\",\"payload\":{\"Item\":{\"UserID\":\"aaa111\",\"UserName\":\"Alex\"}}}"
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+
+				<!--  Présentation EC2-->
+				<section>
+					<section data-background="img/aws_ec2.png">
+							<blockquote>Amazon EC2</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">EC2</h2>
+						<p><b>Utilité :</b> Service fournissant une capacité de calcul redimensionnable dans le cloud.</p>
+						<p><b>Concept :</b> Réduit le temps requis pour obtenir et démarrer de nouvelles instances de serveurs à quelques minutes, ce qui permet une haute scalabilité, au fur et à mesure des variations des besoins de calcul.</p>
+						<p><b>Place dans l'archi :</b> Intégrée au sein du cluster EMR.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Amazon Machine Images (AMI)</h2>
+						<ul>
+							<li><b>Amazon Linux AMI 2015.09.1(HVM), SSD Volume Type</b></li>
+							<li><b>Red Hat Enterprise Linux 7.2(HVM), SSD Volume Type</b></li>
+							<li><b>SUSE Linux Enterprise Server 12 SP1(HVM), SSD Volume Type</b></li>
+							<li><b>Ubuntu Server 14.04LTS(HVM), SSD Volume Type</b></li>
+							<li><b>Windows Server 2012 R2 Base</b></li>
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Types d'instances EC2</h2>
+						<ul>
+							<li>
+								<b>General Purpose:</b>
+								<ul>
+									<li>t2.micro (Free Tier)</li>
+									<li>m4</li>
+								</ul>
+							</li>
+							<li>
+								<b>Compute optimized:</b>
+								<ul>
+									<li>c4</li>
+								</ul>
+							</li>
+							<li>
+								<b>GPU instances:</b>
+								<ul>
+									<li>g2</li>
+								</ul>
+							</li>
+							<li>
+								<b>Memory optimized:</b>
+								<ul>
+									<li>r3</li>
+								</ul>
+							</li>
+							<li>
+								<b>Storage optimized:</b>
+								<ul>
+									<li>d2</li>
+									<li>i2</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<!--  Présentation EMR-->
+				<section>
+					<section data-background="img/aws_emr.png">
+							<blockquote>Amazon EMR</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">EMR</h2>
+						<p><b>Utilité :</b> Permet de traiter de vastes ensembles de données de manière simple rapide et rentable.</p>
+						<p><b>Concept :</b> Fournis un framework Hadoop géré qui permet de distribuer et de traiter de grandes quantités de données à travers des instances EC2 dynamiquement évolutives. Permet également d'exécuter d'autres frameworks tels que <em>Spark</em> ou <em>Presto</em>, et d'intéragir avec les données de S3 ou DynamoDB.</p>
+						<p><b>Place dans l'archi :</b> Exécuter les scripts d'intelligence sur la donnée stockée dans S3 et/ou DynamoDB. Génération régulière de rapports ou transformation des données entrantes en temps réel.</p>
+					</section>
+					<section>
+						<h2 class="davidson">Lexique EMR</h2>
+						<ul>
+							<li><b>Cluster:</b> Collection d'EC2</li>
+							<li><b>Node:</b> Une instance EC2 dans un cluster</li>
+							<li><b>Node type:</b> Role dans le cluster d'une instance</li>
+								<ul>
+									<li><b>Master Node:</b> Manage le cluster, fait tourner les softwares, coordone la distribution de données et des taches aux autres nodes pour les traitements. Le master trace les status des taches et monitore la santé du cluster</li>
+									<li><b>Code Node:</b> Slace node qui fait tourner un composant d'une appli qui elle-même exécute une tache et/ou stocke de la donnée du HDFS du cluster</li>
+									<li><b>Task Node:</b> Slace node qui fait tourner un composant d'une appli qui elle-même exécute une tache uniquement. </li>
+								</ul>
+							
+						</ul>
+					</section>
+					<section>
+						<h2 class="davidson">Opérations basiques</h2>
+						<p>
+							<pre>
+								<code>
+									aws emr create-cluster 
+									--name "demo" 
+									--instance-type m3.xlarge 
+									--instance-count 1 
+									--release-label emr-4.1.0 
+									--ec2-attributes KeyName=nbd1 --use-default-roles 
+									--applications Name=Hive Name=Spark
+
+									aws emr terminate-cluster --cluster-name demo
+								</code>
+							</pre>
+						</p>
+					</section>
+				</section>
+
+				<!--  Présentation Redshift-->
+				<section>
+					<section data-background="img/aws_redshift.png">
+							<!-- <blockquote>Kinesis Stream</blockquote> -->
+					</section>
+					<section>
+						<h2 class="davidson">Redshift</h2>
+						<p><b>Utilité :</b> Permet d'analyser de manière simple et rentable toutes les données grâce aux outils d'informatique décisionnelle existants. </p>
+						<p><b>Concept :</b> Entrepôt de données rapide, entièrement géré et doté d'une capacité de plusieurs pétaoctets. Data warehouse => Column based != DB => Row based</p>
+						<p><b>Place dans l'archi :</b> Exposer la donnée transformée aux outils BI pour analyse rapide.</p>
+					</section>
+					</section>
+				</section>
+
+
+
+				<!--  Modèle de données -->
+				<section>
+					<section data-background="img/server.jpg">
+							<blockquote>Architecture</blockquote>
+					</section>
+					<section  data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/1.png" />
+					</section>
+					<section class="model" data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/2.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/3.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/4.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/5.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/6.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/7.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Infrastructure</h4>
+						<img class="model" src="img/infra/8.png" />
+					</section>
+					<section data-transition="none">
+						<h2 class="davidson">Avec Redshift</h4>
+						<img class="model" src="img/infra/9.png" />
+					</section>
+
+				</section>
+				
+				<section>
+					<section data-background="img/boomerang.jpg">
+							<blockquote>Retour d'expérience</blockquote>
+					</section>
+					<section>
+						<h2 class="davidson">Retour d'expérience</h2>
+						<ul>
+							<li>Scalable</li>
+							<li>Hétérogène</li>
+							<li>Services & technologies éprouvés & reconnus</li>
+							<li>AWS rend le Big Data accessible</li>
+						</ul>
+
+					</section>
+				</section>
+
+				<section data-background="img/contact.png" >
+					<p class="contact">
+						<span class="size-medium blueGreen">Rémi Lejeune</span> <br/>
+						<span class="size-medium rose"> Directeur d'agence Davidson SI Nord</span> <br/>
+						remi.lejeune@davidson.fr <br/>
+						06 33 25 91 44
+						<br/>
+						<br/>
+						<span class="size-medium blueGreen">Alexandre Theve</span> <br/>
+						<span class="size-medium rose"> Ingénieur d'Affaires Davidson SI Nord</span> <br/>
+						alexandre.theve@davidson.fr <br/>
+						06 98 69 47 40
+						<br/>
+						<br/>
+						<span class="size-medium blueGreen">Kevin Sansen</span> <br/>
+						<span class="size-medium rose"> Ingénieur d'Affaires Davidson SI Nord</span> <br/>
+						kevin.sansen@davidson.fr <br/>
+						06 08 15 37 35
+						<br/>
+						<br/>
+						<span class="size-medium blueGreen">Pierre Bausière</span><br />
+						<span class="size-medium rose"> Ingénieur d'Etude Davidson SI Nord</span> <br/>
+						pierre.bausiere@davidson.fr <br/>
+						06 83 71 44 40 <br/>
+					</p>
+				</section>
+			</div>
+		</div>
+
+
+		<img id='minilogo' src='img/theme/logo.png'>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+		<script>
+			Reveal.addEventListener( 'ready', function( event ) {
+				$("#minilogo").show();
+				if(event.indexh === 0){
+					$(".slide-number").hide();
+				}else{
+					$(".slide-number").show();
+				}
+			} );
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				$("#minilogo").show();
+				if(event.indexh === 0){
+					$(".slide-number").hide();
+				}else{
+					$(".slide-number").show();
+				}
+			} );
+		</script>
+
+	</body>
+</html>
